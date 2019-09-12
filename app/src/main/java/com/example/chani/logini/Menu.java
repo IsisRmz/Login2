@@ -40,6 +40,9 @@ public class Menu extends AppCompatActivity {
     }
 
     public void cerrarSesion(View view) {
+        firebaseAuth.signOut();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
 
     }
 
