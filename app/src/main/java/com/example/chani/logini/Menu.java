@@ -47,6 +47,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void irBaseDatos(View view) {
-
+        Intent intent = new Intent(getApplicationContext(), DatabaseActivity.class);
+        startActivity(intent);
     }
 }

@@ -61,4 +61,9 @@ public class Multimedia extends AppCompatActivity {
 
         }
     }
+
+    public void playMusic(View view) {
+        Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER);
+        startActivity(intent);
+    }
 }
