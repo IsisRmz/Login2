@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Modelos.StorageActivity" />
+        <activity android:name=".GaleriaStorageActivity"></activity>
+        <activity android:name=".StorageActivity" />
         <activity android:name=".LecturaEditActivity" />
         <activity android:name=".DatabaseActivity" />
         <activity android:name=".Multimedia" />

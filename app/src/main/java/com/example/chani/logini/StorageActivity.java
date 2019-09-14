@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chani.logini.Modelos.Upload;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -80,9 +81,12 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
                 subirArchivo();
                 break;
             case R.id.btnShow:
+                Intent intent = new Intent(getApplicationContext(), GaleriaStorageActivity.class);
+                startActivity(intent);
                 break;
         }
     }
+
 
     private void subirArchivo() {
         //Validar que tengamos imagen cargada
