@@ -17,15 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LecturaEditActivity"></activity>
+        <activity android:name=".Modelos.StorageActivity" />
+        <activity android:name=".LecturaEditActivity" />
         <activity android:name=".DatabaseActivity" />
         <activity android:name=".Multimedia" />
         <activity
             android:name=".Menu"
             android:noHistory="true" />
         <activity android:name=".Registro" />
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

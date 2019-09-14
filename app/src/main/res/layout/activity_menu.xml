@@ -67,4 +67,11 @@
         android:layout_width="match_parent"
         android:layout_height="36dp" />
 
+    <Button
+        android:id="@+id/btnStorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="storage"
+        android:text="STORAGE" />
+
 </LinearLayout>

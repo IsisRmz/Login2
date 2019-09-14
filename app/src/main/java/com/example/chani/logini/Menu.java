@@ -50,4 +50,9 @@ public class Menu extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), DatabaseActivity.class);
         startActivity(intent);
     }
+
+    public void storage(View view) {
+        Intent intent = new Intent(getApplicationContext(), StorageActivity.class);
+        startActivity(intent);
+    }
 }

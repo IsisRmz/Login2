@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
-        txtEmail = findViewById(R.id.txtEmail);
-        txtPass = findViewById(R.id.txtContra);
+        txtEmail = findViewById(R.id.txtMail);
+        txtPass = findViewById(R.id.txtPass);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         googleSignInClient = GoogleSignIn.getClient(getApplicationContext(), gso);
+        findViewById(R.id.btnIniciar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iniciarSesionCorreo();
+            }
+        });
     }
 
     @Override
@@ -67,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void iniciar(View view) {
-        iniciarSesionCorreo();
-    }
 
     public void irMenu(){
         Intent intent = new Intent(getApplicationContext(), Menu.class);

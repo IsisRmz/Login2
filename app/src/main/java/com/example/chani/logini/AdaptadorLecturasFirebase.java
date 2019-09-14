@@ -2,8 +2,11 @@ package com.example.chani.logini;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chani.logini.Modelos.ModeloActividades;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -35,5 +38,14 @@ class AdaptadorLecturasFirebase extends FirebaseRecyclerAdapter<ModeloActividade
                 }
             });
         }
+
+    public static class StorageActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_storage);
+        }
     }
+}
 
