@@ -10,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+/*
+ViewHolder
+RecycerView.ViewHolder
+El view holder de las imagenes, funciona para colocar la imagen dentro de nuestra vista
+ */
 public class ViewHolder extends RecyclerView.ViewHolder {
 
 	View mView;

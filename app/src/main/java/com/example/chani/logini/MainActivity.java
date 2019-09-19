@@ -25,13 +25,19 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.io.IOException;
 
+//Clase MainActivity
+//AppCompatActivity
+//Esta es la clase del Login
 public class MainActivity extends AppCompatActivity {
 
+    //Declaración de variables constantes
     private FirebaseAuth firebaseAuth;
     EditText txtEmail, txtPass;
     GoogleSignInClient googleSignInClient;
     private static final int RC_SIGN_IN = 9001;
 
+
+    //Inicialización de variables de vista
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         txtEmail = findViewById(R.id.txtMail);
         txtPass = findViewById(R.id.txtPass);
+        //Opciones para API de autenticación con Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -58,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Metodo onStart
+    //Verificar si existe una cuenta abierta
     @Override
     protected void onStart() {
         super.onStart();
@@ -68,17 +77,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Metodo registrar
+    //Se envia a la actividad de Registro
     public void registrar(View view) {
         Intent intent = new Intent(getApplicationContext(), Registro.class);
         startActivity(intent);
     }
 
 
+    //Metodo irMenu
+    //Se envia a la actividad del Menu al iniciar sesión
     public void irMenu(){
         Intent intent = new Intent(getApplicationContext(), Menu.class);
         startActivity(intent);
     }
 
+    //Metodo iniciarSesionCorreo
+    //Recibe y valida los datos
     private void iniciarSesionCorreo() {
         String correo, pass;
         correo = txtEmail.getText().toString();
@@ -104,11 +119,15 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    //Metodo iniciarGoogle
+    //Inicia el proceso para iniciar con la cuenta de Google
     public void iniciarGoogle() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    //Metodo onActivityResult
+    //Se ejecuta cuando la actividad de autenticación de Google termina su ejecución
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -119,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Metodo googleAuthFirebase
+    //Recibe una cuenta y con la cuenta inicia sesión en Firebase
     private void googleAuthFirebase(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential)

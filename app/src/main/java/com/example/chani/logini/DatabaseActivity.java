@@ -25,8 +25,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Clase DatabaseActivity
+AppCompatActivity
+Es la clase que maneja la actividad de la base de datos y su recyclerview
+ */
 public class DatabaseActivity extends AppCompatActivity {
 
+    //Declaración de variables para la vista
     Spinner spinnerGrupos, spinnerLecturas;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -36,6 +42,7 @@ public class DatabaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //inicialización y llenado de los spinners con los datos dados
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
         List<String> spinnerArrayGrupos = new ArrayList<String>();
@@ -63,14 +70,15 @@ public class DatabaseActivity extends AppCompatActivity {
         spinnerLecturas.setAdapter(adapterLecturas);
         txtActividad = findViewById(R.id.txtActividad);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("lecturas");
+        //recyclerview para los datos de la base de datos
         recyclerView = findViewById(R.id.recycler);
         AdaptadorLecturasFirebase adaptadorFirebase = new AdaptadorLecturasFirebase(ModeloActividades.class,R.layout.modelo_lectura
                 ,LecturaHolder.class,databaseReference,DatabaseActivity.this);
-
+        //asignamos el adaptador.
         recyclerView.setAdapter(adaptadorFirebase);
         recyclerView.setLayoutManager(new GridLayoutManager(DatabaseActivity.this,1,
                 LinearLayoutManager.VERTICAL,false));
-
+        //decoración para cada item, para dibujar una linea despues de cada uno
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
@@ -82,6 +90,7 @@ public class DatabaseActivity extends AppCompatActivity {
         selectedID = "";
     }
 
+    //Metodo que agrega un nodo en la base de datos con un nuevo datos
     private void AgregarLectura() {
         String lectura = spinnerLecturas.getSelectedItem().toString();
         String grupo = spinnerGrupos.getSelectedItem().toString();

@@ -1,5 +1,9 @@
 package com.example.chani.logini.Modelos;
 
+/*
+Clase modelo Upload
+Usada para subir y descargar imagenes
+ */
 public class Upload {
 
     private String name;
@@ -7,12 +11,17 @@ public class Upload {
 
     public Upload() {
     }
-
+    /*
+    Constructor con los datos name y imageUrl
+     */
     public Upload(String name, String imageUrl) {
         this.name = name;
         this.imageUrl = imageUrl;
     }
 
+    /*
+    setters y getters
+     */
     public String getName() {
         return name;
     }

@@ -14,6 +14,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/*
+RegistroAcritivy
+AppCompatActivity
+Clase que maneja la actividad de registro
+ */
 public class Registro extends AppCompatActivity {
 
     EditText txtEmail, txtContra;
@@ -43,6 +48,10 @@ public class Registro extends AppCompatActivity {
         crearUsuario();
     }
 
+    /*
+    crearUsuario
+    Valida los datos y después crea un usuario con Email y contraseña
+     */
     private void crearUsuario() {
         String correo, pass;
         correo = txtEmail.getText().toString();

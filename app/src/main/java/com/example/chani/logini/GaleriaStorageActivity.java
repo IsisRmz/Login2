@@ -13,6 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 
+/*
+GaleriaStorageActivity
+AppCompatActivity
+Maneja la galería de Storage e imagenes
+ */
 public class GaleriaStorageActivity extends AppCompatActivity {
 
     DatabaseReference mDatabaseRef;
@@ -32,6 +37,7 @@ public class GaleriaStorageActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //Recycler adapter para las imagenes de la base de datos
         FirebaseRecyclerAdapter<Upload, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Upload, ViewHolder>(
                         Upload.class, R.layout.image_item,

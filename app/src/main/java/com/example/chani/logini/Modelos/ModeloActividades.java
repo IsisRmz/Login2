@@ -1,18 +1,23 @@
 package com.example.chani.logini.Modelos;
 
+/*
+Modelo actividades
+Clase objeto
+Nos servirá para manejar los datos de la base de datos con los siguientes campos
+ */
 public class ModeloActividades {
 
     private String id;
     private String group;
     private String lecture;
     private String activity;
-
+    //constructor para un objeto vacio
     public ModeloActividades(){
 
         //empty
 
     }
-
+    //Constructor recibiendo todos los datos
     public ModeloActividades(String id, String group, String lecture, String activity){
 
         this.id=id;
@@ -21,7 +26,7 @@ public class ModeloActividades {
         this.activity=activity;
 
     }
-
+    //cosntructor recibiendo todos los datos menos el id
     public ModeloActividades(String group, String lecture, String activity){
 
         this.group=group;
@@ -29,7 +34,9 @@ public class ModeloActividades {
         this.activity=activity;
 
     }
-
+    /*
+    Setters y getters para los campos
+     */
     public String getId() {
         return id;
     }

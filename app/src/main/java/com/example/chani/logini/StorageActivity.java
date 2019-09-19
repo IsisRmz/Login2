@@ -30,11 +30,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
-
-public class StorageActivity extends AppCompatActivity implements View.OnClickListener{
-
-    private static final int PICK_IMAGE_REQUEST =9001;
-
+/*
+StorageActivity
+AppCompatActivity
+Clase que maneja la actividad de el almacenamiento en la nube de google
+ */
+public class StorageActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int PICK_IMAGE_REQUEST = 9001;
+    //Declaración de variables de vista
     Button btnChooseFile, btnUpload, btnShow;
     EditText txtNombre;
     ImageView ivFoto;
@@ -46,6 +49,11 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
 
     private StorageTask mUploadTask;
 
+    /*
+    metodo onCreate
+    Inicializamos todas las variables de vista
+    Y la referencia de la base de datos y de el storage
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +95,9 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-
+    /*
+    Metodo para subir el archivo guardado a el cloud storage
+     */
     private void subirArchivo() {
         //Validar que tengamos imagen cargada
         if(mImageUri != null){
@@ -141,6 +151,11 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    /*
+    getFileExtension
+    Regresa la extensión del archivo a partir de una dirección tipo URI
+
+     */
     private String getFileExtension(Uri uri) {
         ContentResolver cR= getContentResolver();
         MimeTypeMap mime=MimeTypeMap.getSingleton();
@@ -148,6 +163,9 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    /*
+    Lanza el intent para requerír una imagen
+     */
     private void seleccionarImagen() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -155,6 +173,9 @@ public class StorageActivity extends AppCompatActivity implements View.OnClickLi
         startActivityForResult(intent,PICK_IMAGE_REQUEST );
     }
 
+    /*
+    onActivityResult que captura el resultado de escoger una imagen y guarda la data en mImageUri
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

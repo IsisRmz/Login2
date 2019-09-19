@@ -22,6 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+LecturaEditActivity
+AppCompatActivity
+Actividad para editar los elementos de lectura
+ */
 public class LecturaEditActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
@@ -31,6 +36,9 @@ public class LecturaEditActivity extends AppCompatActivity {
     Spinner spinnerGrupos, spinnerLecturas;
     Button btnEdit, btnEliminar;
 
+    /*
+    En el metodo onCreate inicializamos los controles que vamos a utilizar
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,7 @@ public class LecturaEditActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         txtActivity = findViewById(R.id.txtActividad);
+        //llenamos los spinners con los mismos datos que el anterior
         final List<String> spinnerArrayGrupos = new ArrayList<String>();
         spinnerArrayGrupos.add("TI-701");
         spinnerArrayGrupos.add("GE-501");
@@ -61,10 +70,12 @@ public class LecturaEditActivity extends AppCompatActivity {
         adapterLecturas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLecturas = findViewById(R.id.spinnerLectura2);
         spinnerLecturas.setAdapter(adapterLecturas);
+        //si el id es vacío terminamos la actividad
         if(id.isEmpty()){
             finish();
         }
         databaseReference = FirebaseDatabase.getInstance().getReference().child("lecturas");
+        //agregamos el eventListener para obtener los datos cada que se actualicen
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,11 +88,7 @@ public class LecturaEditActivity extends AppCompatActivity {
                 }else{
                     finish();
                 }
-
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -89,12 +96,14 @@ public class LecturaEditActivity extends AppCompatActivity {
         });
         btnEdit = findViewById(R.id.btnGuardar);
         btnEliminar = findViewById(R.id.btnEliminar);
+        //btnEliminar elimina un nodo
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 databaseReference.child(id).removeValue();
             }
         });
+        //btnEdit actualiza el nodo
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

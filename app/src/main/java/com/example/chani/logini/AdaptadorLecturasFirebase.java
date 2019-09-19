@@ -12,6 +12,10 @@ import com.example.chani.logini.Modelos.ModeloActividades;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
+/*
+Adaptador para las lecturas
+Basado en el elemento FirebaseRecyclerAdapter
+ */
 class AdaptadorLecturasFirebase extends FirebaseRecyclerAdapter<ModeloActividades, LecturaHolder> {
 
         Context context;
@@ -24,12 +28,14 @@ class AdaptadorLecturasFirebase extends FirebaseRecyclerAdapter<ModeloActividade
 
         @Override
         protected void populateViewHolder(LecturaHolder viewHolder, final ModeloActividades model, int position) {
+            //Llenamos el viewholder con los datos de el modelo
             viewHolder.lblLectura.setText(model.getLecture());
             viewHolder.lblGrupo.setText(model.getGroup());
             viewHolder.lblActividad.setText(model.getActivity());
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //metodo onClick para cada item en el recycler
                     Toast.makeText(context, model.getId(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, LecturaEditActivity.class);
                     intent.putExtra("id", model.getId());
